@@ -133,6 +133,17 @@ def winner(board)
        return nil
      end
      end
-def play
-
+def play(board)
+  turn(board)
+  is_game_over = over?(board)
+  is_game_won = won?(board)
+  is_game_draw = draw?(board)
+  if is_game_over == true
+    if is_game_won == true
+      winner = winner(board)
+      puts"congratulates the winner #{winner}"
+    elsif is_game_draw == true 
+      puts"Cat\'s Game!" 
+    else 
+      return ''
 end
