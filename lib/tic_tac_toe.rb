@@ -75,8 +75,8 @@ def current_player(board)
   end
 end
 
-=begin this method should accept a board as an argument and return false/nil if there is no win combination 
-       present in the board and return the winning combination indexes as an array if there is a win 
+=begin this method should accept a board as an argument and return false/nil if there is no win combination
+       present in the board and return the winning combination indexes as an array if there is a win
 =end
 def won?(board)
   if board.all?{|position|position == " "}
@@ -95,7 +95,7 @@ def won?(board)
   end
 end
 
-#FULL method
+#full method should accept a board and return true if every element in the board contains either an "X" or an "O".
 def full?(board)
   any_spaces =  board.any?{|element| element == " "}
   if any_spaces== true
