@@ -161,7 +161,7 @@ def play(board)
        puts "Cat\'s Game!"
        return " "
      else
-       return ''
+      turn(board)
       end
   end
  end
