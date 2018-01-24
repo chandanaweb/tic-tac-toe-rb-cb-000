@@ -157,12 +157,13 @@ def play(board)
        winner = winner(board)
        puts "Congratulations #{winner}!"
        return " "
-       elsif is_game_draw == true
+     elsif is_game_draw == true
        puts "Cat\'s Game!"
        return " "
      else
+       return ''
       turn(board)
-      end
+    end
   end
  end
 end
