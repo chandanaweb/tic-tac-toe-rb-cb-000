@@ -142,8 +142,8 @@ def play(board)
     if is_game_won == true
       winner = winner(board)
       puts"congratulates the winner #{winner}"
-    elsif is_game_draw == true 
-      puts"Cat\'s Game!" 
-    else 
+    elsif is_game_draw == true
+      puts"Cat\'s Game!"
+    else
       return ''
 end
