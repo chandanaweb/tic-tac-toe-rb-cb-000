@@ -135,12 +135,12 @@ def winner(board)
      end
 
 def play(board)
-  turn = turn(board)
+  turn(board)
   is_game_over = over?(board)
   is_game_won = won?(board)
   is_game_draw = draw?(board)
   if is_game_over == true
-  return ' '
+  return false
   end
   if is_game_won == true
     winner = winner(board)
