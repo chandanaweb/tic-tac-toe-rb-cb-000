@@ -134,7 +134,6 @@ def winner(board)
      end
      end
 def play(board)
-  board.each do |turn|
   turn = turn(board)
   is_game_over = over?(board)
   is_game_won = won?(board)
@@ -150,5 +149,4 @@ def play(board)
   else
    turn(board)
   end
-end
 end
