@@ -36,7 +36,8 @@ def turn(board)
   index = input_to_index(input)
   is_valid = valid_move?(board,index)
   if is_valid === true
-    move(board,index)
+    current_turn = current_player(board)
+    move(board,index,current_turn)
     display_board(board)
   else
     puts 'Please enter correct input'
