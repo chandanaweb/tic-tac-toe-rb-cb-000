@@ -146,5 +146,6 @@ def play(board)
       puts"Cat\'s Game!"
     else
       return ''
+    end
   end
 end
