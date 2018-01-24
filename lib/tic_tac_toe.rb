@@ -134,18 +134,21 @@ def winner(board)
      end
      end
 def play(board)
-  turn(board)
+  board.each do |turn|
+  turn = turn(board)
   is_game_over = over?(board)
   is_game_won = won?(board)
   is_game_draw = draw?(board)
   if is_game_over == true
-    if is_game_won == true
-      winner = winner(board)
-      return "congratulates the winner #{winner}"
-    elsif is_game_draw == true
-      return "Cat\'s Game!"
-    else
-      return ''
-    end
+  return ' '
   end
+  if is_game_won == true
+    winner = winner(board)
+    return "congratulates the winner #{winner}"
+  elsif is_game_draw == true
+    return "Cat\'s Game!"
+  else
+   turn(board)
+  end
+end
 end
