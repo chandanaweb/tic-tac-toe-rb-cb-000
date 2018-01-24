@@ -91,14 +91,16 @@ def full?(board)
 end
 
 def draw?(board)
-incomplete_board = !full?(board)
-if incomplete_board == true
-  return false
+  incomplete_board = !full?(board)
+  if incomplete_board == true
+    return false
+  end
+  is_game_won = won?(board)
+  if is_game_won == true
+    return false
+  end
 end
-is_game_won = won?(board)
-if is_game_won == true
-  return false
-end
+
 def over?(board)
   WIN_COMBINATIONS.each do |combination|
     if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X" ||
