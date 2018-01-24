@@ -3,7 +3,7 @@ def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
-# Define your WIN_COMBINATIONS constant
+#  WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[6,4,2]]
 
 def display_board(board)
@@ -14,22 +14,30 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+# input_to_index , This method takes the user_input (which is a string), converts it to an Integer, and subtracts 1
 def input_to_index(num)
   return num.to_i - 1
 end
 
+#move accepts board,index and player's character. places the  player's character at provided index
 def move(board,index,token)
  return board[index] = token
 end
 
+#valid_move method accepts a board and an index to check and returns true if the move is valid
 def valid_move?(board,index)
- if index < 9 && index > -1 && board[index] != 'X' && board[index] != 'O'
-  return true
- else
-  return false
- end
+  if index < 9 && index > -1 && board[index] != 'X' && board[index] != 'O'
+    return true
+  else
+    return false
+  end
 end
 
+=begin turn method accepts board as argument
+Convert user input to an index
+If the move is valid, make the move and display board.
+Otherwise ask for a new position until a valid move is received.
+=end
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
@@ -43,43 +51,48 @@ def turn(board)
     puts 'Please enter correct input'
     puts "Please enter 1-9:"
     input = gets.strip
-    end
+  end
 end
 
+#This method takes in an argument of the board array and returns the number of turns that have been played
 def turn_count(board)
   count  = 0
   board.each do |player|
     if player == 'X' || player == 'O'
-     count += 1
-   end
+      count += 1
+    end
   end
   return count
 end
 
+# determine if turn is "X"'s turn or "O"'s.
 def current_player(board)
-turn = turn_count(board)
-if turn%2 == 0
-  return "X"
-else
-  return 'O'
-end
+  turn = turn_count(board)
+  if turn%2 == 0
+    return "X"
+  else
+    return 'O'
+  end
 end
 
+=begin this method should accept a board as an argument and return false/nil if there is no win combination 
+       present in the board and return the winning combination indexes as an array if there is a win 
+=end
 def won?(board)
   if board.all?{|position|position == " "}
     return false
   end
   no_combinations = true
   WIN_COMBINATIONS.each do |combination|
-  if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X" ||
-     combination2 = board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O"
-     no_combinations = false
-    return combination
+    if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X" ||
+       combination2 = board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O"
+        no_combinations = false
+        return combination
+    end
   end
- end
- if no_combinations == true
-   return false
- end
+  if no_combinations == true
+    return false
+  end
 end
 
 #FULL method
