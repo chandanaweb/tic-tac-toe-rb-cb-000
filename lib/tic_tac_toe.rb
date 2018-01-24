@@ -152,7 +152,7 @@ def play(board)
   else
      is_game_won = won?(board)
      is_game_draw = draw?(board)
-     if is_game_won == true
+     if is_game_won.is_a?(Array)
        winner = winner(board)
        puts "Congratulations #{winner}"
        return " "
