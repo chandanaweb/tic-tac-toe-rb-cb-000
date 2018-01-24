@@ -136,7 +136,6 @@ def winner(board)
 
 def play(board)
   board.each do|turn|
-  turn(board)
   is_game_over = over?(board)
   if is_game_over == true
     is_game_won = won?(board)
@@ -162,7 +161,7 @@ def play(board)
        puts "Cat\'s Game!"
        return " "
      else
-       return ''
+        turn(board)
     end
   end
  end
