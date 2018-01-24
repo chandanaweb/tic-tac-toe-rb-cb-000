@@ -150,7 +150,6 @@ def play(board)
      end
     return false
   else
-     turn(board)
      is_game_won = won?(board)
      is_game_draw = draw?(board)
      if is_game_won == true
