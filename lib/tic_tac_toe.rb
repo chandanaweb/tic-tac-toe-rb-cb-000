@@ -98,85 +98,91 @@ end
 #full method should accept a board and return true if every element in the board contains either an "X" or an "O".
 def full?(board)
   any_spaces =  board.any?{|element| element == " "}
-  if any_spaces== true
-    return false
-  else
-    return true
-  end
+    if any_spaces == true
+      return false
+    else
+      return true
+    end
 end
 
+#accepts a board and returns true if the board has not been won and is full and false if the board is not won and the board is not full, and false if the board is won
 def draw?(board)
   incomplete_board = !full?(board)
-  if incomplete_board == true
-    return false
-  end
   is_game_won = won?(board)
-  if is_game_won.is_a?(Array)
-    return false
-  else
-    return true
-  end
+    if incomplete_board == true
+      return false
+    elsif is_game_won.is_a?(Array)
+      return false
+    else
+      return true
+    end
 end
 
+#over? accepts a board and returns true if the board has been won, is a draw, or is full.
 def over?(board)
   WIN_COMBINATIONS.each do |combination|
     if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X" ||
        combination2 = board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O"
-      return true
+        return true
     end
   end
   draw = full?(board)
-     if draw == true
+    if draw == true
       return true
-     else
-      return false
-     end
-   end
-def winner(board)
-       no_combinations = true
-     WIN_COMBINATIONS.each do |combination|
-       if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X"
-           no_combinations = false
-         return "X"
-          elsif combination2 = board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O"
-            no_combinations = false
-         return "O"
-       end
-     end
-     if no_combinations == true
-       return nil
-     end
-     end
-
-def play(board)
-  board.each do|turn|
-  is_game_over = over?(board)
-  if is_game_over == true
-    is_game_won = won?(board)
-    is_game_draw = draw?(board)
-    if is_game_won.is_a?(Array)
-      winner = winner(board)
-      puts "Congratulations #{winner}!"
-      return " "
-    elsif is_game_draw == true
-      puts "Cat\'s Game!"
-      return " "
     else
-        return false
-     end
-  else
-     is_game_won = won?(board)
-     is_game_draw = draw?(board)
-     if is_game_won.is_a?(Array)
-       winner = winner(board)
-       puts "Congratulations #{winner}!"
-       return " "
-     elsif is_game_draw == true
-       puts "Cat\'s Game!"
-       return " "
-     else
-        turn(board)
+      return false
+    end  
+end
+
+#winner method should accept a board and return the token, "X" or "O" that has won the game given a winning board   
+def winner(board)
+  no_combinations = true
+  WIN_COMBINATIONS.each do |combination|
+    if combination1 = board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X"
+        no_combinations = false
+        return "X"
+    elsif combination2 = board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O"
+            no_combinations = false
+            return "O"
     end
   end
- end
+  if no_combinations == true
+   return nil
+  end
+end
+
+=begin 
+The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns, 
+checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, 
+reporting to the user the outcome of the game
+=end
+def play(board)
+  board.each do|turn|
+    is_game_over = over?(board)
+    is_game_won = won?(board)
+    is_game_draw = draw?(board)
+    if is_game_over == true
+      if is_game_won.is_a?(Array)
+        winner = winner(board)
+        puts "Congratulations #{winner}!"
+        return " "
+      elsif is_game_draw == true
+        puts "Cat\'s Game!"
+        return " "
+      else
+        return false
+      end
+    else
+      if is_game_won.is_a?(Array)
+        winner = winner(board)
+        puts "Congratulations #{winner}!"
+        return " "
+      elsif is_game_draw == true
+        puts "Cat\'s Game!"
+        return " "
+      else
+        turn(board)
+      end
+    end
+  end
 end
