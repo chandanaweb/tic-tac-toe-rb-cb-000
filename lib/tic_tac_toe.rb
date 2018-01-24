@@ -133,7 +133,7 @@ def winner(board)
        return nil
      end
      end
-     
+
 def play(board)
   turn = turn(board)
   is_game_over = over?(board)
