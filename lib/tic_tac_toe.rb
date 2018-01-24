@@ -147,9 +147,9 @@ def play(board)
     elsif is_game_draw == true
       puts "Cat\'s Game!"
       return " "
-    else 
+    else
         return false
-     end  
+     end
   else
      is_game_won = won?(board)
      is_game_draw = draw?(board)
