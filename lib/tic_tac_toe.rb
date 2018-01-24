@@ -99,6 +99,8 @@ def draw?(board)
   is_game_won = won?(board)
   if is_game_won.is_a?(Array)
     return false
+  else
+    return true
   end
 end
 
