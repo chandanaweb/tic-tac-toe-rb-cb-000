@@ -139,6 +139,9 @@ def play(board)
   is_game_over = over?(board)
   is_game_won = won?(board)
   is_game_draw = draw?(board)
+  if is_game_over == true
+  return false
+  end
   if is_game_won == true
     winner = winner(board)
     puts "congratulates the winner #{winner}"
@@ -148,9 +151,6 @@ def play(board)
     return " "
   else
    turn(board)
-  end
-  if is_game_over == true
-  return false
   end
  end
 end
