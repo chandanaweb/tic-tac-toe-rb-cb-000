@@ -97,7 +97,7 @@ def draw?(board)
     return false
   end
   is_game_won = won?(board)
-  if is_game_won == true
+  if is_game_won.is_a?(Array)
     return false
   end
 end
