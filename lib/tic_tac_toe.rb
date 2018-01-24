@@ -131,10 +131,10 @@ def over?(board)
       return true
     else
       return false
-    end  
+    end
 end
 
-#winner method should accept a board and return the token, "X" or "O" that has won the game given a winning board   
+#winner method should accept a board and return the token, "X" or "O" that has won the game given a winning board
 def winner(board)
   no_combinations = true
   WIN_COMBINATIONS.each do |combination|
@@ -151,9 +151,9 @@ def winner(board)
   end
 end
 
-=begin 
-The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns, 
-checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw, 
+=begin
+The play method is the main method of the tic tac toe application and is responsible for the game loop. A tic tac toe game must allow players to take turns,
+checking if the game is over after every turn, and at the conclusion of the game, whether because it was won or because it was a draw,
 reporting to the user the outcome of the game
 =end
 def play(board)
