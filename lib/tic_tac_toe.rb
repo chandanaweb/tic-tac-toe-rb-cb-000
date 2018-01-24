@@ -144,10 +144,10 @@ def play(board)
   end
   if is_game_won == true
     winner = winner(board)
-    print "congratulates the winner #{winner}"
+    puts "congratulates the winner #{winner}"
     return " "
   elsif is_game_draw == true
-    print "Cat\'s Game!"
+    puts "Cat\'s Game!"
     return " "
   else
    turn(board)
